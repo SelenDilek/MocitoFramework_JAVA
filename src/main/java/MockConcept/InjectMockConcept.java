@@ -22,9 +22,9 @@ public class InjectMockConcept
     List<String> mockList;
 
     @InjectMocks
-    Employee Mockemployee;
+    Employee mockEmployee;
 
-    @BeforeClass
+    @Before
     public void setUp(){
 
 
@@ -33,8 +33,15 @@ public class InjectMockConcept
     }
 
     @Test
-    public void mockitoTest1(){
+    public  void mockitoTest1(){
 
+        when(mockList.get(0)).thenReturn("Selen");
+        when(mockList.get(1)).thenReturn("Dilek");
+        when(mockList.size()).thenReturn(2);
+        mockList.add(1,"TOM");
+
+        assertEquals("Selen",mockEmployee.getEmpName().get(0));
+        assertEquals(3,mockEmployee.getEmpName().size());
 
     }
 
